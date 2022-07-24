@@ -363,7 +363,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             else:
                 shorten_link = short_url(f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 await client.send_message(
-                    chat_id=query.from_user.id,text = shorten_link)
+                    chat_id=query.from_user.id,text = f"<b>==> Title : {files.file_name}\n\n==> File_Size : \n\n==> Download Link : {shorten_link}\n\n==>How To Download : https://t.me/vmpdisk/48</b>)
                 await query.answer('Check PM, I have sent files in pm', show_alert=True)
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn !', show_alert=True)
@@ -404,13 +404,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer()
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-        ], [
-            InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat=''),
             InlineKeyboardButton('Movie Request', url='https://t.me/VideoMemesAdmin')
-        ], [
-            InlineKeyboardButton('ℹ️ Help', callback_data='help'),
-            InlineKeyboardButton('😊 About', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(

@@ -363,7 +363,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             else:
                 shorten_link = short_url(f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 await client.send_message(
-                    chat_id=query.from_user.id,text = f"<b>==> Title : {files.file_name}\n\n==> File_Size : {get_size(files.file_size)}\n\n==> Download Link : {shorten_link}\n\n==>How To Download : https://t.me/vmpdisk/48</b>")
+                    chat_id=query.from_user.id,text = f"<b>==> Title : {files.file_name}\n\n==> File_Size : {get_size(files.file_size)}\n\n==> Download Link : {shorten_link}\n\n==>How To Download : https://t.me/vmpdisk/48</b>",
+                disable_web_page_preview=True)
                 await query.answer('Check PM, I have sent files in pm', show_alert=True)
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn !', show_alert=True)
